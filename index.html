@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="bower_components/please-wait/build/please-wait.css" rel="stylesheet">
+    <style>
+        body > .inner {
+            display: none;
+        }
+
+        body.pg-loaded > .inner {
+            display: block;
+        }
+    </style>
+</head>
+<body ng-app="app">
+<input type="button" id="btn2" value="test2">
+<div  class="inner"  ng-view></div>
+<script src="bower_components/please-wait/build/please-wait.min.js"></script>
+<script type="text/javascript">
+    document.getElementById("btn2").addEventListener("click", function () {
+        var loading_screen = pleaseWait({
+            backgroundColor: '#f46d3b',
+            loadingHtml: "<qr-code></qr-code>" +
+            "<input type='button' id='btn1' value='test'/>"
+        });
+        document.getElementById("btn1").addEventListener("click", function () {
+            loading_screen.finish();
+        });
+    })
+</script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/qrcodejs/qrcode.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

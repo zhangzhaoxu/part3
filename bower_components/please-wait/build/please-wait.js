@@ -82,7 +82,6 @@
   PleaseWait = (function() {
     PleaseWait._defaultOptions = {
       backgroundColor: null,
-      logo: null,
       loadingHtml: null,
       template: "<div class='pg-loading-inner'>\n  <div class='pg-loading-center-outer'>\n    <div class='pg-loading-center-middle'>\n      <h1 class='pg-loading-logo-header'>\n        <img class='pg-loading-logo'></img>\n      </h1>\n      <div class='pg-loading-html'>\n      </div>\n    </div>\n  </div>\n</div>",
       onLoadedCallback: null
@@ -111,9 +110,6 @@
       }
       this._readyToShowLoadingHtml = false;
       this._logoElem = this._loadingElem.getElementsByClassName("pg-loading-logo")[0];
-      if (this._logoElem != null) {
-        this._logoElem.src = this.options.logo;
-      }
       removeClass("pg-loaded", document.body);
       addClass("pg-loading", document.body);
       document.body.appendChild(this._loadingElem);
